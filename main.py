@@ -3,6 +3,14 @@ import matplotlib.pyplot as plt
 from numba import jit
 from time import sleep
 
+def analytic(g, y0, h, x):
+    n = len(x)
+    y = np.zeros(n)
+    for i in range(0,n):
+        y[i] = g(x[i])
+    label = "Analitico"
+    return y, label
+
 # Método de euler
 def euler(f, y0, h, x):
     n = len(x)
@@ -63,21 +71,23 @@ def RK4(f, y0, h, x):
     return y, label
 
 # Método de Adams-Moulton
-def Adams_Moulton(f, y0, h, x):
+def Adams_Moulton(f, y0, y1, h, x):
     n = len(x)
     y = np.zeros(n)
     y[0] = y0
-    for i in range(0,n-1):
+    y[1] = y1
+    for i in range(0, n-1):
         y[i+2] = y[i+1] + (h/12) * (-f(x[i],y[i]) + 8*f(x[i+1], y[i+1]) + 5*f(x[i+2], y[i+2]) )
     
     label = 'Adams_Moulton' 
     return y, label
 
 # Método de Adams-Bashforth
-def Adams_Bashforth(f, y0, h, x):
+def Adams_Bashforth(f, y0, y1, h, x):
     n = len(x)
     y = np.zeros(n)
     y[0] = y0
+    y[1] = y1
     for i in range(0, n-1):
         y[i+2] = y[i+1] + (h/2) * (-f(x[i],y[i]) + 3*f(x[i+1], y[i+1]))
     
@@ -106,10 +116,12 @@ if __name__ == "__main__":
                                           # Voce pode substituir por outros metodos como euler, euler_melhorada, e outros. 
                                           # O mesmo acontece com o de baixo.
     y_numeric1, label2  = RK3(f, y0, h, x)# Aqui o mesmo que o de cima, Só que RK3.
+    y_analytic, label3  = RK4(f, y0, h, x)
 
     # Plot
     plt.plot(x, y_numeric, 'r',label=label1)      # Aqui plota o RK4.
     plt.plot(x, y_numeric1, '--b', label=label2)  # Aqui plota o RK3.
+    plt.plot(x, y_analytic, '*g', label=label3)   # Aqui plota o analitico.
 
 
     plt.title("Gráfico") # O titulo do gráfico.
