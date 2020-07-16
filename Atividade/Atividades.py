@@ -79,13 +79,13 @@ class atividade:
         plt.plot(x, y, cor, label = label )
 
     def viewGraph(self):
+        plt.rcParams['figure.figsize'] = (10,7)  
         plt.title("Gráfico") 
         plt.legend()         
 
         plt.xlabel("X")         
         plt.ylabel("Y")        
         plt.grid()           
-        plt.rcParams['figure.figsize'] = (19,12)  
         plt.show() 
 
     def valorY(self):
