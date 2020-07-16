@@ -39,7 +39,7 @@ class atividade:
 
         label = 'Adams_Bashforth_Moulton_4_ordem'
         self.addGraph(self.y, label, '-g')
-
+    #TODO #1 Dormand_Price_4_ordem Explodindo nos últimos valores.
     def Dormand_Price_4_ordem(self):
         for i in range(0,self.n):
             k1 = self.h * self.f(self.x[i], self.y[i])
@@ -48,7 +48,6 @@ class atividade:
             k4 = self.h * self.f(self.x[i] + ((4.0/5.0)*self.h), self.y[i] + ((44.0/45.0)*k1) - ((56.0/15.0)*k2) + ((32.0/9.0)*k3))
             k5 = self.h * self.f(self.x[i] + ((8.0/9.0)*self.h), self.y[i] + ((19372.0/6561.0)*k1) - ((25360.0/2187.0)*k2) + ((64448.0/6561.0)*k3) - ((212.0/729.0)+k4))
             k6 = self.h * self.f(self.x[i] + self.h, self.y[i] + ((9017.0/3168.0)*k1) - ((355.0/33.0)*k2) - ((46732.0/5247.0)*k3) + ((49.0/176.0)*k4) - ((5103.0/18656.0)*k5))
-            k7 = self.h * self.f(self.x[i] + self.h, self.y[i] + ((35.0/384.0)*k1) + ((500.0/1113.0)*k3) + ((125.0/192.0)*k4) - ((2187.0/6784.0)*k5) + ((11.0/84.0)*k6))
 
             self.y[i+1] = self.y[i] + ((35.0/384.0)*k1) + ((500.0/1113.0)*k3) + ((125.0/192.0)*k4) - ((2187.0/6784.0)*k5) + ((11.0/84.0)*k6) 
 
