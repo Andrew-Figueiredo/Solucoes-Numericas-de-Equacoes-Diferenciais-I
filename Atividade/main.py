@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 atividade_A.valorY()
                 
                 # Plotar gráfico
-                atividade_A.viewGraph()
+                atividade_A.viewGraph("Grafico_A")
             elif select == "b":
             
                 # 12.2 - B
@@ -48,7 +48,7 @@ if __name__ == "__main__":
                 atividade_B.valorY()
                 
                 # Plotar gráfico
-                atividade_B.viewGraph()
+                atividade_B.viewGraph("Grafico_B")
 
             elif select == "c":
                 # 12.2 - C
@@ -69,7 +69,7 @@ if __name__ == "__main__":
                 atividade_C.valorY()
                 
                 # Plotar gráfico
-                atividade_C.viewGraph()
+                atividade_C.viewGraph("Grafico_C")
             
             elif select == "0":
                 print("Saindo . . .")

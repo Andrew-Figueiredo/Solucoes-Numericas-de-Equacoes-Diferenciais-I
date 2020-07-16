@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
-from sympy import symbols
 
 class atividade:
     def __init__(self, f, y_init, x_init, x_end, h ):
@@ -78,15 +77,17 @@ class atividade:
         x = self.getX()
         plt.plot(x, y, cor, label = label )
 
-    def viewGraph(self):
+    def viewGraph(self, namefig):
         plt.rcParams['figure.figsize'] = (10,7)  
-        plt.title("Gráfico") 
+        plt.title(str(namefig)) 
         plt.legend()         
 
         plt.xlabel("X")         
         plt.ylabel("Y")        
-        plt.grid()           
-        plt.show() 
+        plt.grid()  
+        plt.savefig('Atividade/result/' + str(namefig))         
+        plt.show()
+        
 
     def valorY(self):
         print("Resultado Numérico: ")
